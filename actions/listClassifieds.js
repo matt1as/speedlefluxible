@@ -8,7 +8,7 @@ var ClassifiedStore = require('../stores/ClassifiedStore');
 
 function fetchClassifieds(context, payload, done) {
     debug('fetching classifieds');
-    context.service.read('classified', {}, {}, function (err, classifieds) {
+    context.service.read('classified', {}, [], function (err, classifieds) {
         context.dispatch('RECEIVE_CLASSIFIEDS', classifieds);
         done();
     });

@@ -2,7 +2,6 @@
 'use strict';
 var createStore = require('fluxible/addons').createStore;
 
-
 var ClassifiedStore = createStore({
     storeName: 'ClassifiedStore',
     handlers: {
@@ -15,8 +14,6 @@ var ClassifiedStore = createStore({
     receiveClassifieds: function (classifieds) {
         var self = this;
         self.classifieds = classifieds;
-
-
         self.emitChange();
     },
 

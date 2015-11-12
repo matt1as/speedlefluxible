@@ -19,11 +19,10 @@ import connectToStores  from 'fluxible-addons-react/connectToStores';
 import { NavLink } from 'fluxible-router';
 
 class Classified extends React.Component {
-
     render() {
         var classifieds = this.props.classifieds.map(function(classified) {
             return (
-              <li><div><h1>{classified.name}</h1>
+              <li key={classified._id}><div><h1>{classified.name}</h1>
               <img src={classified.thumbnails[0]} width="300"></img>
               <p><span>{classified.description}</span></p>
               </div>

@@ -1,7 +1,12 @@
 import React from 'react';
 import { NavLink } from 'fluxible-router';
 
+
+
 class Nav extends React.Component {
+
+
+
     render() {
         const selected = this.props.selected;
         const links = this.props.links;
@@ -33,7 +38,7 @@ class Nav extends React.Component {
         );
     }
     _onKeyDown() {
-           if (event.keyCode === ENTER_KEY_CODE) {
+           if (event.keyCode === 13) {
                event.preventDefault();
                event.stopPropagation();
 
