@@ -8,7 +8,7 @@ var ClassifiedStore = createStore({
         'RECEIVE_CLASSIFIEDS': 'receiveClassifieds',
     },
     initialize: function () {
-        this.classifieds = {};
+        this.classifieds = [];
         this.sortedByDate = [];
     },
     receiveClassifieds: function (classifieds) {
