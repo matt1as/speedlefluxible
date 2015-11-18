@@ -1,4 +1,6 @@
 var listClassifieds = require('../actions/listClassifieds');
+var getClassified = require('../actions/getClassified');
+
 
 
 export default {
@@ -22,9 +24,22 @@ export default {
         method: 'get',
         page: 'classifieds',
         title: 'Classifieds',
-        handler: require('../components/Classified'),
+        handler: require('../components/Classifieds'),
         action: function (context, payload, done) {
           context.executeAction(listClassifieds, {}, done);
       }
     },
+    classified: {
+        path: '/classifieds/:id',
+        method: 'get',
+        page: 'classifieds',
+        title: 'Classified',
+        handler: require('../components/Classified'),
+        action: function (context, payload, done) {
+          var pageId = payload.get('params').get('id');
+          context.executeAction(getClassified, { id : pageId }, done);
+      }
+
+   }
+
 };

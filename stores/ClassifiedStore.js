@@ -1,39 +1,39 @@
 
 'use strict';
+var debug = require('debug')('Speedle:ClassifiedStore');
 var createStore = require('fluxible/addons').createStore;
 
 var ClassifiedStore = createStore({
     storeName: 'ClassifiedStore',
     handlers: {
-        'RECEIVE_CLASSIFIEDS': 'receiveClassifieds',
+        'RECEIVE_CLASSIFIED': 'receiveClassified',
     },
+
     initialize: function () {
-        this.classifieds = [];
-        this.sortedByDate = [];
+        this.classified = {};
     },
-    receiveClassifieds: function (classifieds) {
+
+    receiveClassified: function (classified) {
+        debug( "Received classified: " + JSON.stringify(classified));
         var self = this;
-        self.classifieds = classifieds;
+        self.classified = classified;
         self.emitChange();
     },
 
-    getAll: function () {
-        return this.classifieds;
-    },
-    get: function (id) {
-        return this.classified[id];
+
+    get: function () {
+        return this.classified;
     },
 
     dehydrate: function () {
         return {
-            classifieds: this.classifieds,
-
+            classified: this.classified,
         };
     },
+
     rehydrate: function (state) {
         this.classified = state.classified;
     }
 });
-
 
 module.exports = ClassifiedStore;

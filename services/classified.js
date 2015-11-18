@@ -1,6 +1,8 @@
 
 'use strict';
 
+var debug = require('debug')('Speedle:services/classified');
+
 var request = require('superagent'),
   speedle_api_root = 'http://api.speedle.se/api/classifieds';
 
@@ -11,12 +13,18 @@ module.exports = {
     // at least one of the CRUD methods is required
     read: function(req, resource, params, config, callback) {
       // do the GET request
-    var url
-    if (params.query != undefined ) {
-      url = speedle_api_root + "?q=" + params.query;
-    } else {
-      url = speedle_api_root ;
-    }
+      var url
+      if (params.query != undefined ) {
+          debug( "Read with query " + params.query);
+        url = speedle_api_root + "?q=" + params.query;
+      } else if ( params.id != undefined ) {
+        debug( "Read with id " + params.id);
+        url = speedle_api_root + "/" + params.id;
+      } else {
+        debug( "Read");
+        url = speedle_api_root ;
+      }
+  
 
       request
         .get(url)

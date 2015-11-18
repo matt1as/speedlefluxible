@@ -18,22 +18,18 @@ import ClassifiedStore  from '../stores/ClassifiedStore';
 import connectToStores  from 'fluxible-addons-react/connectToStores';
 import { NavLink } from 'fluxible-router';
 
+var debug = require('debug')('Speedle:component/classified');
+
+
 class Classified extends React.Component {
     render() {
-        var classifieds = this.props.classifieds.map(function(classified) {
-            return (
-              <li key={classified._id}><div><h1>{classified.name}</h1>
-              <img src={classified.thumbnails[0]} width="300"></img>
-              <p><span>{classified.description}</span></p>
-              </div>
-              </li>
-            );
-        }, this);
+      var classified = this.props.classified;
+      debug( "Rendering classified with id " + classified._id);
 
         return (
             <div className="thread-section">
                 <ul className="thread-list">
-                    {classifieds}
+                    {classified.name}
                 </ul>
             </div>
         );
@@ -45,11 +41,9 @@ module.exports = connectToStores(
     Classified,
     [ClassifiedStore],
     function (context, props) {
-      console.log("Connect to store");
-      console.log("Data:" + context.getStore(ClassifiedStore).getAll());
 
         return {
-            classifieds: context.getStore(ClassifiedStore).getAll(),
+            classified: context.getStore(ClassifiedStore).get(),
         }
     }
 );

@@ -3,6 +3,8 @@ import Application from './components/Application';
 import ApplicationStore from './stores/ApplicationStore';
 import RouteStore from './stores/RouteStore';
 import ClassifiedStore from './stores/ClassifiedStore';
+import ClassifiedsStore from './stores/ClassifiedsStore';
+
 
 var fetchrPlugin = require('fluxible-plugin-fetchr');
 var https = require('https');
@@ -21,5 +23,7 @@ app.plug(fetchrPlugin({
 app.registerStore(RouteStore);
 app.registerStore(ApplicationStore);
 app.registerStore(ClassifiedStore);
+app.registerStore(ClassifiedsStore);
+
 
 module.exports = app;

@@ -4,7 +4,7 @@
  */
 'use strict';
 var debug = require('debug')('Speedle:showListClassifieds');
-var ClassifiedStore = require('../stores/ClassifiedStore');
+var ClassifiedsStore = require('../stores/ClassifiedsStore');
 
 function fetchClassifieds(context, payload, done) {
     debug('fetching classifieds');
@@ -25,24 +25,11 @@ function searchClassifieds(context, payload, done) {
 }
 
 module.exports = function (context, payload, done) {
-    context.dispatch('SHOW_CHAT_START');
-    var messageStore = context.getStore(MessageStore);
-
-    if (Object.keys(messageStore.getAll()).length === 0) {
-        fetchMessages(context, payload, done);
-    } else {
-        debug('dispatching SHOW_CHAT_END');
-        context.dispatch('SHOW_CHAT_END');
-        done();
-    }
-};
-
-module.exports = function (context, payload, done) {
 
     context.dispatch('LIST_CLASSIFIEDS');
-    var classifiedStore = context.getStore(ClassifiedStore);
+    var classifiedsStore = context.getStore(ClassifiedsStore);
 
-    if (Object.keys(classifiedStore.getAll()).length === 0) {
+    if (Object.keys(classifiedsStore.getAll()).length === 0) {
         fetchClassifieds(context, payload, done);
     } else {
         debug('dispatching LIST_CLASSIFIEDS_END');
