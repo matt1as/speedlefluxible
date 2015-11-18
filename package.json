@@ -7,7 +7,8 @@
     "build": "webpack & webpack --config webpack.config.production.js",
     "dev": "node webpack-dev-server.js & DEBUG=Speedle* PORT=3001 nodemon start.js -e js,jsx",
     "lint": "eslint ./*.js ./**/*.js",
-    "start": "node start.js"
+    "start": "node start.js",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "babel": "^5.4.7",
