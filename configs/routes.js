@@ -9,6 +9,7 @@ export default {
         method: 'get',
         page: 'home',
         title: 'Home',
+        inMenu: true,
         handler: require('../components/Home')
     },
     about: {
@@ -16,6 +17,8 @@ export default {
         method: 'get',
         page: 'about',
         title: 'About',
+        inMenu: true,
+
         handler: require('../components/About'),
 
     },
@@ -24,6 +27,7 @@ export default {
         method: 'get',
         page: 'classifieds',
         title: 'Classifieds',
+        inMenu: true,
         handler: require('../components/Classifieds'),
         action: function (context, payload, done) {
           context.executeAction(listClassifieds, {}, done);
@@ -34,6 +38,7 @@ export default {
         method: 'get',
         page: 'classifieds',
         title: 'Classified',
+        inMenu: false,
         handler: require('../components/Classified'),
         action: function (context, payload, done) {
           var pageId = payload.get('params').get('id');
