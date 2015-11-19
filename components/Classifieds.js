@@ -17,24 +17,26 @@ import React from 'react';
 import ClassifiedsStore  from '../stores/ClassifiedsStore';
 import connectToStores  from 'fluxible-addons-react/connectToStores';
 import { NavLink } from 'fluxible-router';
+import { ListGroup } from 'react-bootstrap'
+import { ListGroupItem } from 'react-bootstrap'
 
 class Classifieds extends React.Component {
     render() {
         var classifieds = this.props.classifieds.map(function(classified) {
             return (
-              <li key={classified._id}><div><NavLink routeName="classified" navParams={{id:classified._id}}><h1>{classified.name}</h1></NavLink>
-              <img src={classified.thumbnails[0]} width="300"></img>
+              <ListGroupItem key={classified._id}><NavLink routeName="classified" navParams={{id:classified._id}}><h1>{classified.name}</h1></NavLink>
+              <NavLink routeName="classified" navParams={{id:classified._id}}><img src={classified.thumbnails[0]} width="300"></img></NavLink>
               <p><span>{classified.description}</span></p>
-              </div>
-              </li>
+
+              </ListGroupItem>
             );
         }, this);
 
         return (
-            <div className="thread-section">
-                <ul className="thread-list">
+            <div>
+                <ListGroup>
                     {classifieds}
-                </ul>
+                </ListGroup>
             </div>
         );
     }
