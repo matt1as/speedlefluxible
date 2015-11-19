@@ -13,6 +13,7 @@ import serialize from 'serialize-javascript';
 import {navigateAction} from 'fluxible-router';
 import debugLib from 'debug';
 import React from 'react';
+var ReactDOMServer = require('react-dom/server');
 import app from './app';
 import HtmlComponent from './components/Html';
 import { createElementWithContext } from 'fluxible-addons-react';
@@ -54,11 +55,11 @@ server.use((req, res, next) => {
         const exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
 
         debug('Rendering Application component into html');
-        const html = React.renderToStaticMarkup(htmlComponent({
+        const html = ReactDOMServer.renderToStaticMarkup(htmlComponent({
             clientFile: env === 'production' ? 'main.min.js' : 'main.js',
             context: context.getComponentContext(),
             state: exposed,
-            markup: React.renderToString(createElementWithContext(context))
+            markup: ReactDOMServer.renderToString(createElementWithContext(context))
         }));
 
         debug('Sending markup');

@@ -41,7 +41,7 @@ export default {
         inMenu: false,
         handler: require('../components/Classified'),
         action: function (context, payload, done) {
-          var pageId = payload.get('params').get('id');
+          var pageId = payload.params.id;
           context.executeAction(getClassified, { id : pageId }, done);
       }
 

@@ -1,20 +1,32 @@
 /*globals document*/
 
 import React from 'react';
-import Nav from './Nav';
+import NavBar from './NavBar';
 import ApplicationStore from '../stores/ApplicationStore';
 import { connectToStores, provideContext } from 'fluxible-addons-react';
 import { handleHistory } from 'fluxible-router';
+import { Row } from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
+import { PageHeader } from 'react-bootstrap';
 
 class Application extends React.Component {
     render() {
-        var Handler = this.props.currentRoute.get('handler');
+        var Handler = this.props.currentRoute.handler;
 
         return (
-            <div>
-                <Nav selected={this.props.currentPageName} links={this.props.pages} />
-                <Handler />
-            </div>
+
+            <Grid>
+            <PageHeader>
+              <NavBar selected={this.props.currentPageName} links={this.props.pages} />
+            </PageHeader>
+              <Row className = "show-grid">
+                <Col xs={12} md={8}>
+
+                  <Handler/>
+                </Col>
+              </Row>
+            </Grid>
         );
     }
 
