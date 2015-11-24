@@ -25,12 +25,21 @@ class Classified extends React.Component {
     render() {
       var classified = this.props.classified;
       debug( "Rendering classified with id " + classified._id);
-
         return (
             <div className="thread-section">
                 <ul className="thread-list">
-                    {classified.name}
+                    <h1>{classified.name}</h1>
+                    <img src={classified.thumbnails} width='640px'/>
                 </ul>
+                <ul class="list-inline post-meta">
+                  <li><span class="fa fa-price"></span> Price: {classified.price}</li>
+                  <li><span class="fa fa-phone"></span> Phone: {classified.phoneNumber}</li>
+                  <li><span class="fa fa-email"></span> Email: {classified.email}</li>
+                </ul>
+                <div class="post-content">
+                  {classified.description}
+                </div>
+
             </div>
         );
     }
