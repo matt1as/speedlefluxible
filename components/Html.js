@@ -1,23 +1,30 @@
 import React from 'react';
 import ApplicationStore from '../stores/ApplicationStore';
 
+
 class Html extends React.Component {
     render() {
         return (
-            <html>
-            <head>
-                <meta charSet="utf-8" />
-                <title>{this.props.context.getStore(ApplicationStore).getPageTitle()}</title>
-                <meta name="viewport" content="width=device-width, user-scalable=no" />
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossOrigin="anonymous"/>
-            </head>
-            <body>
-                <div id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}></div>
-            </body>
-            <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
-            <script src={'/public/js/' + this.props.clientFile}></script>
+          <html>
+          <head>
+              <meta charSet="utf-8" />
+              <title>{this.props.context.getStore(ApplicationStore).getPageTitle()}</title>
+              <meta name="viewport" content="width=device-width, user-scalable=no"/>
 
-            </html>
+              <link rel="stylesheet" href="/public/css/Velocity/assets/plugins/bootstrap/css/bootstrap.min.css"/>
+              <link rel="stylesheet" href="/public/css/Velocity/assets/plugins/font-awesome/css/font-awesome.css"/>
+              <link rel="stylesheet" href="/public/css/Velocity/assets/plugins/flexslider/flexslider.css"/>
+              <link id="theme-style" rel="stylesheet" href="/public/css/Velocity/assets/css/styles.css"/>
+          </head>
+          <body className="blog-page">
+            <div className="wrapper">
+              <div id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}></div>
+              </div>
+          </body>
+          <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
+          <script src={'/public/js/' + this.props.clientFile}></script>
+
+          </html>
         );
     }
 }

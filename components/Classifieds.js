@@ -24,19 +24,23 @@ class Classifieds extends React.Component {
     render() {
         var classifieds = this.props.classifieds.map(function(classified) {
             return (
-              <ListGroupItem key={classified._id}><NavLink routeName="classified" navParams={{id:classified._id}}><h1>{classified.name}</h1></NavLink>
-              <NavLink routeName="classified" navParams={{id:classified._id}}><img src={classified.thumbnails[0]} width="300"></img></NavLink>
-              <p><span>{classified.description}</span></p>
+              <article className="post col-md-4 col-sm-6 col-xs-12">
+                <div className="post-inner">
+                  <figure className="post-thumb">
+                  <img className="img-responsive" src={classified.images} />
 
-              </ListGroupItem>
+                  </figure>
+                </div>
+              </article>
             );
         }, this);
 
         return (
-            <div>
-                <ListGroup>
+            <div className="blog container">
+            <div className="row">>
+
                     {classifieds}
-                </ListGroup>
+            </div>
             </div>
         );
     }

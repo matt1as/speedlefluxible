@@ -25,7 +25,9 @@ var webpackConfig = {
                     require.resolve('babel-loader')
                 ]
             },
-            { test: /\.json$/, loader: 'json-loader'}
+            { test: /\.json$/, loader: 'json-loader'},
+            { test: /\.css$/, loader: "style!css" }
+
         ]
     },
     node: {

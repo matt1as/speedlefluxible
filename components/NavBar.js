@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'fluxible-router';
 import { NavItem } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
+import { Header } from 'react-bootstrap';
 
 
 
@@ -46,9 +47,11 @@ class NavBar extends React.Component {
 
 
         return (
-          <Nav bsStyle="pills" activeKey={1} >
-            {linkNav}
-          </Nav>
+          <div className="header header-blog">
+            <Nav bsStyle="pills" activeKey={1} >
+              {linkNav}
+            </Nav>
+          </div>
 
 
         );

@@ -39,5 +39,9 @@
     "superagent": "^1.4.0",
     "webpack": "^1.4.12",
     "webpack-dev-server": "^1.6.5"
+  },
+  "devDependencies": {
+    "css-loader": "^0.23.0",
+    "style-loader": "^0.13.0"
   }
 }
