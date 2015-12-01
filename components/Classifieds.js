@@ -23,24 +23,30 @@ import { ListGroupItem } from 'react-bootstrap'
 class Classifieds extends React.Component {
     render() {
         var classifieds = this.props.classifieds.map(function(classified) {
-            return (
-              <article className="post col-md-4 col-sm-6 col-xs-12">
-                <div className="post-inner">
-                  <figure className="post-thumb">
-                  <img className="img-responsive" src={classified.images} />
 
-                  </figure>
-                </div>
-              </article>
-            );
+          return (
+              <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 nopadding" key={classified._id}>
+                  <div className="panel panel-default">
+                      <div className="panel-heading">
+                        <h3 className="panel-title">{classified.name}</h3>
+                      </div>
+                      <div className="panel-body">
+                        <p><img src={classified.thumbnails[0]} className="list-image"/></p>
+                        <p><strong>Contact:</strong> {classified.ownerName}</p>
+                        <p>{classified.description}</p>
+                      </div>
+                  </div>
+              </div>
+          );
+
         }, this);
 
         return (
             <div className="blog container">
-            <div className="row">>
+              <div className="row">
 
-                    {classifieds}
-            </div>
+                      {classifieds}
+              </div>
             </div>
         );
     }

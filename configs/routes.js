@@ -7,21 +7,15 @@ export default {
     home: {
         path: '/',
         method: 'get',
-        page: 'home',
-        title: 'Home',
+        page: 'classifieds',
+        title: 'Classifieds',
         inMenu: true,
-        handler: require('../components/Home')
+        handler: require('../components/Classifieds'),
+        action: function (context, payload, done) {
+          context.executeAction(listClassifieds, {}, done);
+        }
     },
-    about: {
-        path: '/about',
-        method: 'get',
-        page: 'about',
-        title: 'About',
-        inMenu: true,
 
-        handler: require('../components/About'),
-
-    },
     classifieds: {
         path: '/classifieds',
         method: 'get',
