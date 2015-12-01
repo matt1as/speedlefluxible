@@ -12,7 +12,6 @@ function fetchClassifieds(context, payload, done) {
         context.dispatch('RECEIVE_CLASSIFIEDS', classifieds);
         done();
     });
-
 }
 
 function searchClassifieds(context, payload, done) {
@@ -21,7 +20,6 @@ function searchClassifieds(context, payload, done) {
         context.dispatch('RECEIVE_CLASSIFIEDS', classifieds);
         done();
     });
-
 }
 
 module.exports = function (context, payload, done) {
@@ -32,7 +30,7 @@ module.exports = function (context, payload, done) {
     if( payload.query != null && payload.query.length >= 3 ) {
       searchClassifieds(context, payload,done );
     } else {
-          fetchClassifieds(context, payload, done);
+      fetchClassifieds(context, payload, done);
     }
 
 };

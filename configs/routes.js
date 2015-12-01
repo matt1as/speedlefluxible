@@ -1,8 +1,6 @@
 var listClassifieds = require('../actions/listClassifieds');
 var getClassified = require('../actions/getClassified');
 
-
-
 export default {
     home: {
         path: '/',
