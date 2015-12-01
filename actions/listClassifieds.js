@@ -16,7 +16,7 @@ function fetchClassifieds(context, payload, done) {
 }
 
 function searchClassifieds(context, payload, done) {
-    debug('fetching classifieds');
+    debug('fetching classifieds with query');
     context.service.read('classified', { query:payload.query}, {}, function (err, classifieds) {
         context.dispatch('RECEIVE_CLASSIFIEDS', classifieds);
         done();
@@ -27,13 +27,12 @@ function searchClassifieds(context, payload, done) {
 module.exports = function (context, payload, done) {
 
     context.dispatch('LIST_CLASSIFIEDS');
+    debug( JSON.stringify(payload));
     var classifiedsStore = context.getStore(ClassifiedsStore);
-
-    if (Object.keys(classifiedsStore.getAll()).length === 0) {
-        fetchClassifieds(context, payload, done);
+    if( payload.query != null && payload.query.length >= 3 ) {
+      searchClassifieds(context, payload,done );
     } else {
-        debug('dispatching LIST_CLASSIFIEDS_END');
-        context.dispatch('LIST_CLASSIFIEDS_END');
-        done();
+          fetchClassifieds(context, payload, done);
     }
+
 };
