@@ -63,7 +63,7 @@ a:active {
 }
 
 .navbar-default {
-    background: #F2C335 !important;
+    background: #87cefa !important;
     border: none;
     font-family: 'Yanone Kaffeesatz', 'Open Sans', sans-serif;
     font-size: 32px;
@@ -75,7 +75,10 @@ a:active {
     -webkit-box-shadow: none;
     box-shadow: none;
 
-    margin: 4px;
+    margin-left: 0px;
+    margin-top: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
 }
 
 .panel-default>.panel-body {
