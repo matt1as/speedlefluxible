@@ -27,9 +27,8 @@ class Classifieds extends React.Component {
 
         return (
             <div className="blog container">
-            <SearchBar/>
-
               <div className="row">
+                <SearchBar/>
               </div>
               <div className="row">
                 {classifieds}
