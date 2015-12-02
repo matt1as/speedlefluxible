@@ -16,7 +16,6 @@ class Classifieds extends React.Component {
                       </div>
                       <div className="panel-body">
                         <p><img src={classified.thumbnails[0]} className="list-image"/></p>
-                        <p><strong>Contact:</strong> {classified.ownerName}</p>
                         <p>{classified.description}</p>
                       </div>
                   </div>

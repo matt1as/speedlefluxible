@@ -25,7 +25,7 @@ body {
 a:link,
 a:visited,
 a:hover {
-    color: #F25C05;
+    color: white;
 }
 
 a:active {
@@ -72,6 +72,7 @@ a:active {
 
 .panel-heading {
   background: #87cefa !important;
+  max-height: 70px!important;
 }
 
 .panel {
@@ -79,8 +80,11 @@ a:active {
     -webkit-box-shadow: none;
     box-shadow: none;
 
+    max-height: 440px;
+    min-height: 440px;
+
     margin-left: 0px;
-    margin-top: 4px;
+    margin-top: 15px;
     margin-right: 4px;
     margin-bottom: 4px;
 }
@@ -96,12 +100,12 @@ a:active {
 }
 
 .panel-body p {
-    margin: 10px 0 10px 60px;
-    padding-left: 20px;
+    margin: 10px 0 10px 10px;
+    padding-left: 5px;
     line-height: 1.2em;
 }
-.panel-body h3 a {
-  color: white;
+.panel-body a {
+  color: white!important;
 }
 
 
@@ -138,8 +142,8 @@ a:active {
 }
 
 .list-image {
-  width: 150px !important;
-  height: 150px !important;
+  width: 250px !important;
+  height: 250px !important;
   margin: 0 !important;
   margin-top: 0px !important;
   margin-right: 4px !important;
