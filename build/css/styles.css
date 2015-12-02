@@ -96,6 +96,9 @@ a:active {
     padding-left: 20px;
     line-height: 1.2em;
 }
+.panel-body h3 a {
+  color: white;
+}
 
 
 .tag:not(:last-child)::after  {
