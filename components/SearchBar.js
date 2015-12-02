@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
     return (
         <div className="search-wrapper">
             <input type="search" ref="searchKey" className="form-control"
-                placeholder="Classified"
+                placeholder="Search classified"
                 onChange={this.handleSearchEntry.bind(this)}
                 />
             <button className="btn btn-link" ><span className="glyphicon glyphicon-remove" aria-hidden="true" onClick={this.clearText}></span></button>
