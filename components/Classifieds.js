@@ -2,6 +2,7 @@ import React from 'react';
 import ClassifiedsStore  from '../stores/ClassifiedsStore';
 import connectToStores  from 'fluxible-addons-react/connectToStores';
 import { NavLink } from 'fluxible-router';
+import SearchBar from './SearchBar'
 
 
 class Classifieds extends React.Component {
@@ -27,6 +28,9 @@ class Classifieds extends React.Component {
 
         return (
             <div className="blog container">
+              <div className="row">
+                <SearchBar/>
+              </div>
               <div className="row">
 
                       {classifieds}
