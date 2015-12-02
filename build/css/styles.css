@@ -70,6 +70,10 @@ a:active {
     color: #ffffff;
 }
 
+.panel-heading {
+  background: #87cefa !important;
+}
+
 .panel {
     border-radius: 4px;
     -webkit-box-shadow: none;
