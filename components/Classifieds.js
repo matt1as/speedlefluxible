@@ -8,7 +8,6 @@ import SearchBar from './SearchBar'
 class Classifieds extends React.Component {
     render() {
         var classifieds = this.props.classifieds.map(function(classified) {
-
           return (
               <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 nopadding" key={classified._id}>
                   <div className="panel panel-default">
