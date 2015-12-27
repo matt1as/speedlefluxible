@@ -3,36 +3,32 @@ import ClassifiedsStore  from '../stores/ClassifiedsStore';
 import connectToStores  from 'fluxible-addons-react/connectToStores';
 import { NavLink } from 'fluxible-router';
 import SearchBar from './SearchBar'
+import { GridList, GridTile, IconButton, StarBorder } from 'material-ui/lib/grid-list';
 
 
 class Classifieds extends React.Component {
     render() {
         var classifieds = this.props.classifieds.map(function(classified) {
           return (
-              <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 nopadding" key={classified._id}>
-                  <div className="panel panel-default">
-                      <div className="panel-heading">
-                        <h3><NavLink routeName="classified" navParams={{id:classified._id}}>{classified.name}</NavLink></h3>
-                      </div>
-                      <div className="panel-body">
-                        <p><img src={classified.thumbnails[0]} className="list-image"/></p>
-                        <p>{classified.description}</p>
-                      </div>
-                  </div>
-              </div>
+            <NavLink routeName="classified" navParams={{id: classified._id}}>
+            <GridTile
+                title={classified.name}
+                subtitle={<span>Price <b>{classified.price} {classified.currency}</b></span>}>
+              <img src={classified.thumbnails[0]} />
+            </GridTile>
+          </NavLink>
           );
-
         }, this);
 
         return (
-            <div className="blog container">
-              <div className="row">
-                <SearchBar/>
-              </div>
-              <div className="row">
-                {classifieds}
-              </div>
-            </div>
+          <GridList
+            cellHeight={200}
+            style={{width: 320, height: 640, overflowY: 'auto'}}
+            >
+            {
+              classifieds
+            }
+          </GridList>
         );
     }
 

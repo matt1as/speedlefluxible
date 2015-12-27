@@ -1,11 +1,12 @@
 /*global document, window */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import debug from 'debug';
 import { createElementWithContext } from 'fluxible-addons-react';
 import app from './app';
 
-const debugClient = debug('speedlefluxible');
+const debugClient = debug('frontend');
 const dehydratedState = window.App; // Sent from the server
 
 window.React = React; // For chrome dev tool support
@@ -13,6 +14,10 @@ window.React = React; // For chrome dev tool support
 // expose debug object to browser, so that it can be enabled/disabled from browser:
 // https://github.com/visionmedia/debug#browser-support
 window.fluxibleDebug = debug;
+
+require("bootstrap-webpack");
+var $ = require('jquery');
+
 
 debugClient('rehydrating app');
 
@@ -25,7 +30,7 @@ app.rehydrate(dehydratedState, (err, context) => {
     const mountNode = document.getElementById('app');
 
     debugClient('React Rendering');
-    React.render(
+    ReactDOM.render(
         createElementWithContext(context),
         mountNode,
         () => debugClient('React Rendered')

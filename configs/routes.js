@@ -14,6 +14,27 @@ export default {
         }
     },
 
+    privacyPolicy: {
+        path: '/privacyPolicy',
+        method: 'get',
+        page: 'privacyPolicy',
+        title: 'Privacy Policy',
+        inMenu: true,
+        handler: require('../components/privacyPolicy'),
+
+    },
+
+    termsOfService: {
+        path: '/termsOfService',
+        method: 'get',
+        page: 'termsOfService',
+        title: 'Terms of Service',
+        inMenu: true,
+        handler: require('../components/termsOfService'),
+
+    },
+
+
     classifieds: {
         path: '/classifieds',
         method: 'get',

@@ -1,50 +1,53 @@
-/**
- * Copyright 2013-2014 Facebook, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 import React from 'react';
 import ClassifiedStore  from '../stores/ClassifiedStore';
 import connectToStores  from 'fluxible-addons-react/connectToStores';
-import { NavLink } from 'fluxible-router';
 
-var debug = require('debug')('Speedle:component/classified');
-
+import { Row, Col } from 'react-bootstrap';
+//Import statements:
+const Card = require('material-ui/lib/card/card');
+const CardActions = require('material-ui/lib/card/card-actions');
+const CardExpandable = require('material-ui/lib/card/card-expandable');
+const CardHeader = require('material-ui/lib/card/card-header');
+const CardMedia = require('material-ui/lib/card/card-media');
+const CardText = require('material-ui/lib/card/card-text');
+const CardTitle = require('material-ui/lib/card/card-title');
+const FloatingActionButton = require('material-ui/lib/floating-action-button');
+const Phone = require('material-ui/lib/svg-icons/communication/phone')
+const Email = require('material-ui/lib/svg-icons/communication/email')
 
 class Classified extends React.Component {
     render() {
       var classified = this.props.classified;
-      debug( "Rendering classified with id " + classified._id);
         return (
-          <div className="blog container">
-            <div className="row">
-              <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 nopadding" key={classified._id}>
-                <div className="panel panel-default">
-                  <div className="panel-heading">
-                    <h3><NavLink routeName="classified" navParams={{id:classified._id}}>{classified.name}</NavLink></h3>
-                  </div>
-                  <div className="panel-body">
-                    <p><img src={classified.thumbnails[0]} className="list-image"/></p>
-                    <p><strong>Contact:</strong> {classified.ownerName}</p>
-                    <p>{classified.description}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        
+          <Row>
+            <Col md={4} className="hidden-xs hidden-sm">
+              Nånting nånting
+            </Col>
+            <Col md={4} xs={12}>
+              <Card>
+                <CardMedia overlay={<CardTitle title={classified.name} subtitle={classified.price + " " + classified.currency}/>}>
+                  <img src={classified.thumbnails[0]} />
+                </CardMedia>
+                <CardActions>
+                <FloatingActionButton ><Phone/></FloatingActionButton>
+                <FloatingActionButton href={"mailto:"+classified.email} linkButton={true} ><Email/></FloatingActionButton>
+                      </CardActions>
+                <CardText>
+                <p>
+                  <strong>Seller: {classified.ownerName}</strong>
+                  </p>
+                  {classified.description}
+                </CardText>
+              </Card>
+            </Col>
+            <Col md={4}  className="hidden-xs hidden-sm">
+              Nånting nånting
+            </Col>
+
+          </Row>
         );
     }
-
 };
 
 module.exports = connectToStores(
